@@ -45,6 +45,8 @@ export const register = AsyncHandler(async (req, res) => {
 
     await sendVerificationEmail(user, token);
   } catch (error) {
+    await Patient.findByIdAndDelete(user.patient);
+    await Doctor.findByIdAndDelete(user.doctor);
     await User.findByIdAndDelete(user._id);
     throw new ErrorHandler("User registration failed", 400);
   }
@@ -63,13 +65,13 @@ export const login = AsyncHandler(async (req, res) => {
   const user = await User.findOne({ email });
 
   if (!user) {
-    throw new ErrorHandler("Invalid email or password", 401);
+    throw new ErrorHandler("Invalid email or password", 400);
   }
 
   const isPasswordValid = await user.comparePassword(password);
 
   if (!isPasswordValid) {
-    throw new ErrorHandler("Invalid email or password", 401);
+    throw new ErrorHandler("Invalid email or password", 400);
   }
 
   // Check if email is verified
