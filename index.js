@@ -1,15 +1,15 @@
 import express from "express";
-import { connectDb } from "./db/connectDb.js";
+import { connectDb } from "./src/db/connectDb.js";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import morgan from "morgan";
-import userRoutes from "./routes/user.js";
-import patientRoutes from "./routes/patient.js";
-import doctorRoutes from "./routes/doctor.js";
-import appoinmentRoutes from "./routes/appoinment.js";
-import bedRoutes from "./routes/bed.js";
-import { errorHandler } from "./utils/ErrorHandler.js";
+import userRoutes from "./src/routes/user.js";
+import patientRoutes from "./src/routes/patient.js";
+import doctorRoutes from "./src/routes/doctor.js";
+import appoinmentRoutes from "./src/routes/appoinment.js";
+import bedRoutes from "./src/routes/bed.js";
+import { errorHandler } from "./src/utils/ErrorHandler.js";
 dotenv.config();
 
 const app = express();
