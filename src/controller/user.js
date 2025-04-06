@@ -65,7 +65,7 @@ export const login = AsyncHandler(async (req, res) => {
   const user = await User.findOne({ email });
 
   if (!user) {
-    throw new ErrorHandler("Invalid email or password", 400);
+    throw new ErrorHandler("User not exists", 400);
   }
 
   const isPasswordValid = await user.comparePassword(password);
