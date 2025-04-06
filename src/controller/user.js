@@ -126,7 +126,7 @@ export const changePassword = AsyncHandler(async (req, res) => {
 
   const match = await user.comparePassword(oldPassword);
 
-  if (!match) throw new ErrorHandler("Invalid password", 401);
+  if (!match) throw new ErrorHandler("Invalid password", 400);
 
   user.password = newPassword;
   await user.save();
