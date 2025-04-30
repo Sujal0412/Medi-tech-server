@@ -84,14 +84,14 @@ export const login = AsyncHandler(async (req, res) => {
     });
   }
 
-  if (user?.sessionToken) {
-    return res.status(403).json({
-      success: false,
-      message: "User already logged in",
-      isVerified: true,
-      userId: user._id,
-    });
-  }
+  // if (user?.sessionToken) {
+  //   return res.status(403).json({
+  //     success: false,
+  //     message: "User already logged in",
+  //     isVerified: true,
+  //     userId: user._id,
+  //   });
+  // }
 
   // Generate JWT token
   const token = genrateToken(user._id);
