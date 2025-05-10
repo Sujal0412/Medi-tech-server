@@ -38,5 +38,5 @@ app.use("/api/bed", bedRoutes);
 app.listen(PORT, () => {
   console.log("Server is running on port 5000");
 });
-
+ 
 app.use(errorHandler);

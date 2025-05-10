@@ -19,7 +19,13 @@ router.post(
   user.login
 );
 
-router.post("/change-password", AuthCheck, user.changePassword);
+router.put(
+  "/change-password",
+  AuthCheck,
+  validation.changePassword,
+  validation.processValidationResult,
+  user.changePassword
+);
 
 router.get("/me", AuthCheck, user.getuser);
 

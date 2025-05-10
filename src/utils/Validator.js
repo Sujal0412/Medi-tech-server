@@ -350,6 +350,26 @@ export const getMedicalHistoryValidation = [];
 
 export const getPatientAppointmentsValidation = [];
 
+export const changePassword = [
+  body("oldPassword")
+    .trim()
+    .notEmpty()
+    .withMessage("Old password is required")
+    .isLength({ min: 6 })
+    .withMessage("Old password must be at least 6 characters long"),
+
+  body("newPassword")
+    .trim()
+    .notEmpty()
+    .withMessage("New password is required")
+    .isLength({ min: 6 })
+    .withMessage("New password must be at least 6 characters long")
+    .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/)
+    .withMessage(
+      "New password must contain at least one uppercase letter, one lowercase letter, one number and one special character"
+    ),
+];
+
 // Add this to your existing validators
 export const createPatientAccountValidator = [
   // Personal Information - Required Fields
